@@ -12,7 +12,7 @@
     <artifactId>recipes-book</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>recipes-book</name>
-    <description>Recepies book app</description>
+    <description>Recipes book app</description>
 
     <properties>
         <java.version>11</java.version>
