@@ -1,5 +1,6 @@
 package pl.fabiobas.recipesbook.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.fabiobas.recipesbook.model.*;
@@ -10,6 +11,7 @@ import pl.fabiobas.recipesbook.repositories.UnitOfMeasureRepository;
 import java.math.BigDecimal;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class DataLoader implements CommandLineRunner {
 
@@ -25,7 +27,6 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
         Optional<UnitOfMeasure> teaspoonUomOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
         if (teaspoonUomOptional.isEmpty()) {
             throw new RuntimeException("Expected UOM not found");
