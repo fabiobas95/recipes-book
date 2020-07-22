@@ -82,7 +82,15 @@
             </div>
             <div class="card border-primary" style="margin-bottom: 20px">
                 <div class="card-header bg-primary">
-                    <h1 class="card-title">Ingredients</h1>
+                    <div class="row">
+                        <div class="col-md-11">
+                            <h1 class="card-title">Ingredients</h1>
+                        </div>
+                        <div>
+                            <a class="btn btn-light" href="#" role="button"
+                               th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}">View</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -90,7 +98,8 @@
                             <ul>
                                 <li th:each="ingredient:${recipe.ingredients}"
                                     th:text="${(ingredient.amount + ' ' + ingredient.uom.description + ' - ' +
-                                    ingredient.description)}">1 Cup of Milk</li>
+                                    ingredient.description)}">1 Cup of Milk
+                                </li>
                                 <li th:remove="all">1 Teaspoon of Chocolate</li>
                                 <li th:remove="all">1 Teaspoon of Sugar</li>
                             </ul>
