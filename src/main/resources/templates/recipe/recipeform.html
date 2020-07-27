@@ -61,7 +61,13 @@
                             </div>
                             <div class="col-md-3 form-group">
                                 <label>Difficulty</label>
-                                <select class="form-control">
+                                <select class="form-control" th:field="*{difficulty}">
+                                    <option th:each="difficultyVal:${T(pl.fabiobas.recipesbook.model.Difficulty).values()}"
+                                            th:value="${difficultyVal.name()}"
+                                            th:text="${difficultyVal.name()}">
+                                    </option>
+                                </select>
+                                <select class="form-control" th:remove="all">
                                     <option>Easy</option>
                                     <option>Medium</option>
                                     <option>Hard</option>
@@ -91,7 +97,8 @@
                                 <h1 class="card-title">Ingredients</h1>
                             </div>
                             <div>
-                                <a class="btn btn-light" href="#" role="button">Edit</a>
+                                <a class="btn btn-light" href="#" role="button"
+                                   th:href="@{'/recipe/' + ${recipe.id} +'/ingredients'}">Edit</a>
                             </div>
                         </div>
                     </div>
