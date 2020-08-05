@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.fabiobas.recipesbook.commands.RecipeCommand;
 import pl.fabiobas.recipesbook.converters.RecipeCommandToRecipe;
 import pl.fabiobas.recipesbook.converters.RecipeToRecipeCommand;
+import pl.fabiobas.recipesbook.exceptions.NotFoundException;
 import pl.fabiobas.recipesbook.model.Recipe;
 import pl.fabiobas.recipesbook.repositories.RecipeRepository;
 
@@ -39,7 +40,7 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (recipeOptional.isEmpty()) {
-            throw new RuntimeException("Recipe not found!");
+            throw new NotFoundException("Recipe not found!");
         }
 
         return recipeOptional.get();

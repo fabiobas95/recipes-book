@@ -6,6 +6,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import pl.fabiobas.recipesbook.converters.RecipeCommandToRecipe;
 import pl.fabiobas.recipesbook.converters.RecipeToRecipeCommand;
+import pl.fabiobas.recipesbook.exceptions.NotFoundException;
 import pl.fabiobas.recipesbook.model.Recipe;
 import pl.fabiobas.recipesbook.repositories.RecipeRepository;
 
@@ -71,4 +72,12 @@ class RecipeServiceImplTest {
 
         verify(recipeRepository,times(1)).deleteById(anyLong());
     }
-}
+
+    @Test()
+    public void getRecipeByIdNotFound() throws Exception {
+        Optional<Recipe> recipeOptional = Optional.empty();
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Exception exception = assertThrows(NotFoundException.class, () -> recipeService.findById(1L));
+    }}
